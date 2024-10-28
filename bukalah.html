@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Putri</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #fddde6, #d5e8ef);
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        input, button {
+            display: block;
+            margin: 20px auto;
+            padding: 15px;
+            width: 60%;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+        }
+        input {
+            background-color: #f8b4d9;
+        }
+        button {
+            background-color: white;
+            cursor: pointer;
+        }
+        .slide {
+            display: none;
+        }
+    </style>
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? 'block' : 'none';
+                slide.setAttribute('aria-hidden', i !== index);
+            });
+        }
+
+        function nextSlide() {
+            const nameInput = document.getElementById('name').value;
+            const statusInput = document.getElementById('status').value;
+
+            if (currentSlide === 0 && (!nameInput || !statusInput)) {
+                alert("Silakan isi kedua kolom.");
+                return;
+            }
+
+            currentSlide++;
+            showSlide(currentSlide);
+
+            if (currentSlide === 1) {
+                setTimeout(() => {
+                    nextSlide();  // Pindah ke slide ketiga setelah 20 detik
+                }, 20000);
+            }
+        }
+
+        window.onload = function () {
+            showSlide(0);
+        };
+    </script>
+</head>
+<body>
+
+    <!-- Slide 1 -->
+    <div class="container slide" aria-hidden="true">
+        <h1>Halloo princesss, bilaaa ell imtinann</h1>
+        <input type="text" id="name" placeholder="Masukkan nama">
+        <input type="text" id="status" placeholder="Status">
+        <button onclick="nextSlide()">Lanjut</button>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="container slide" aria-hidden="true">
+        <h1>Haiii princess, bilaaa el ìmtinann</h1>
+        <p> disiniii akuuh mengucapkann permohonann maaff yangg sebesarr besarnyaaa bilaa manaa tadii akuu membuatmuuu takk nyamann dann ilfeell kepadakuu🙏🏻🙏🏻 </p>
+        <button onclick="nextSlide()">Lanjut</button>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="container slide" aria-hidden="true">
+        <h1>Maukahh manggaa</h1>
+        <img src="<a href='https://ibb.co.com/41xLXd9'><img src='https://i.ibb.co.com/41xLXd9/IMG-7037.jpg' alt='IMG-7037' border='0'></a>">
+    </div>
+
+</body>
+</html>
